@@ -18,6 +18,7 @@ public class LoginTest {
 	@BeforeClass
 	void setup()
 	{
+		System.setProperty("webdriver.edge.driver", "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedgedriver.exe");
 		  // Setup WebDriverManager to automatically manage the Edge driver
         WebDriverManager.edgedriver().setup(); // Automatically downloads the correct msedgedriver version
 
