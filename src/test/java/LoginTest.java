@@ -3,6 +3,7 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -17,7 +18,12 @@ public class LoginTest {
 	void setup()
 	{
 		
-		driver = new EdgeDriver();
+		  // Initialize EdgeOptions and enable headless mode
+        EdgeOptions options = new EdgeOptions();
+        options.addArguments("--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
+		
+		driver = new EdgeDriver(options);
+		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get("https://innopasswordapp.azurewebsites.net/Account/Login?ReturnUrl=%2Fmypassword");
 		driver.manage().window().maximize();
