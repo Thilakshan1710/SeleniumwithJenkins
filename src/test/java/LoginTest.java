@@ -1,10 +1,13 @@
 import java.time.Duration;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 public class LoginTest {
 	
@@ -21,17 +24,30 @@ public class LoginTest {
 	}
 	
 	@Test
-	void testLogin()
+	void testLoginAndDashboard()
 	{
 		
-		LoginPage lp = new LoginPage(driver);
-		lp.clickLogin();
+		LoginPage loginPage  = new LoginPage(driver);
 		
+		loginPage .clickLogin();
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	 
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='tilesHolder']/div[2]/div/div/div/div[2]")));
+				
+	    DashboardPage dashboardPage = new DashboardPage(driver);
+        dashboardPage.clickSomeElement();
 	}
 	
 	@AfterClass
 	void tearDown() 
 	{
+		try {
+            // Delay for 5 seconds (5000 milliseconds)
+            Thread.sleep(10000);  // Adjust time as needed
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 		
 		driver.quit();
 	}

@@ -14,13 +14,13 @@ public class LoginPage {
 		
 		//Locators
 		
-		By btn_login_loc=By.xpath("//button[@title='Log in using your Microsoft account']");
+		By loginButton =By.xpath("//button[@title='Log in using your Microsoft account']");
 		
 		//Action methods 
 		
 		public void clickLogin() 
 		{
-			driver.findElement(btn_login_loc).click();
+			driver.findElement(loginButton ).click();
 		}
 		
 	
