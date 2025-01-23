@@ -23,7 +23,7 @@ public class LoginTest {
 
 		  // Initialize EdgeOptions and enable headless mode
         EdgeOptions options = new EdgeOptions();
-        options.addArguments("--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
+      //  options.addArguments("--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
 		
 		driver = new EdgeDriver(options);
 		
