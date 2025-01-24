@@ -2,14 +2,15 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 //import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+//import org.openqa.selenium.edge.EdgeDriver;
+//import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import io.github.bonigarcia.wdm.WebDriverManager;
+//import io.github.bonigarcia.wdm.WebDriverManager;
 
 
 public class LoginTest {
@@ -19,21 +20,23 @@ public class LoginTest {
 	@BeforeClass
 	void setup()
 	{
-		System.setProperty("webdriver.edge.driver", "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedgedriver.exe");
+		System.setProperty("webdriver.gecko.driver", "C:\\JMeter\\bin\\geckodriver.exe");
 		  // Setup WebDriverManager to automatically manage the Edge driver
-        WebDriverManager.edgedriver().setup(); // Automatically downloads the correct msedgedriver version
+       // WebDriverManager.edgedriver().setup(); // Automatically downloads the correct msedgedriver version
 
 		  // Initialize EdgeOptions and enable headless mode
-        EdgeOptions options = new EdgeOptions();
+      //  EdgeOptions options = new EdgeOptions();
         
-        options.setBinary("C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe");
+        //options.setBinary("C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe");
 
-        options.addArguments("--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
+      //  options.addArguments("--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
 		
-        driver = new EdgeDriver(options);
+       // driver = new EdgeDriver(options);
 		//driver = new EdgeDriver();
 		
 		//driver = new ChromeDriver();
+		
+		driver = new FirefoxDriver();
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get("https://innopasswordapp.azurewebsites.net/Account/Login?ReturnUrl=%2Fmypassword");
@@ -66,7 +69,7 @@ public class LoginTest {
             e.printStackTrace();
         }
 		
-		driver.quit();
+		//driver.quit();
 	}
 
 }
