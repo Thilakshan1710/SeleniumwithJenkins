@@ -2,8 +2,8 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 //import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-//import org.openqa.selenium.edge.EdgeDriver;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 //import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,8 +20,11 @@ public class LoginTest {
 	@BeforeClass
 	void setup()
 	{
-		System.setProperty("webdriver.gecko.driver", "C:\\JMeter\\bin\\geckodriver.exe");
-		  // Setup WebDriverManager to automatically manage the Edge driver
+		//System.setProperty("webdriver.gecko.driver", "C:\\JMeter\\bin\\geckodriver.exe");
+		
+		System.setProperty("webdriver.edge.driver", "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedgedriver.exe");
+	
+		// Setup WebDriverManager to automatically manage the Edge driver
        // WebDriverManager.edgedriver().setup(); // Automatically downloads the correct msedgedriver version
 
 		  // Initialize EdgeOptions and enable headless mode
@@ -32,11 +35,11 @@ public class LoginTest {
       //  options.addArguments("--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
 		
        // driver = new EdgeDriver(options);
-		//driver = new EdgeDriver();
+		driver = new EdgeDriver();
 		
 		//driver = new ChromeDriver();
 		
-		driver = new FirefoxDriver();
+		//driver = new FirefoxDriver();
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get("https://innopasswordapp.azurewebsites.net/Account/Login?ReturnUrl=%2Fmypassword");
